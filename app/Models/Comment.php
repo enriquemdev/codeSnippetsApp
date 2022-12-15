@@ -29,4 +29,14 @@ class Comment extends Model
     }
 
     //Hacer la relacion recursiva con el comentario del que es respuesta, video en yt
+    public function childComments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function parentComment()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
 }
