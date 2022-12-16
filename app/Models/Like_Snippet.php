@@ -9,6 +9,11 @@ class Like_Snippet extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'snippet_id'
+    ];
+
     //Un like puede tener solo un snippet
     public function snippet()
     {
