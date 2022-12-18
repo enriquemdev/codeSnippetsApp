@@ -20,7 +20,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->cascadeOnDelete();
             $table->foreignIdFor(Snippet::class)->cascadeOnDelete();
-            $table->foreign('response_of')->references('id')->on('comments')->nullable()->cascadeOnDelete();//Pueden ser respuesta a otro comentario de manera recursiva
+            //$table->foreign('response_of')->references('id')->on('comments')->nullable()->cascadeOnDelete();//Pueden ser respuesta a otro comentario de manera recursiva
+            $table->foreignIdFor(Comment::class)->name('response_of')->cascadeOnDelete();
             $table->text('comment_text');
             $table->timestamps();
         });

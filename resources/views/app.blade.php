@@ -9,6 +9,11 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        {{-- FontAwesome --}}
+        <link href="../../../vendor/fontawesome-free-6.2.1-web/css/fontawesome.css" rel="stylesheet">
+        <link href="../../../vendor/fontawesome-free-6.2.1-web/css/brands.css" rel="stylesheet">
+        <link href="../../../vendor/fontawesome-free-6.2.1-web/css/solid.css" rel="stylesheet">
+
         <!-- Scripts -->
         @routes
         @viteReactRefresh

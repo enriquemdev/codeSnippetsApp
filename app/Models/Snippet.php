@@ -12,6 +12,7 @@ class Snippet extends Model
     protected $fillable = [
         'name',
         'text',
+        'description'
     ];
 
     public function user()

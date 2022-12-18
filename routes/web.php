@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SnippetController;
+use App\Models\Snippet;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,9 +27,17 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//Modificada la ruta de dashboard para retornar la vista de snippets/index
+
+// function () {
+//     return action([SnippetController::class, 'index']);
+//     // Inertia::render('Snippets/Index', [
+//     //     'snippets' => Snippet::all()->latest()->get(),
+//     // ]);
+// }
+
+Route::get('/dashboard', [SnippetController::class, 'index'])
+    ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,7 +48,7 @@ Route::middleware('auth')->group(function () {
 //Created manually
 
 Route::resource('snippets', SnippetController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'create'])
     ->middleware(['auth', 'verified']);
 
 

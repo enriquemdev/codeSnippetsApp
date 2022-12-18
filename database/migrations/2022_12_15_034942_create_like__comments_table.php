@@ -15,7 +15,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('like__comments', function (Blueprint $table) {
+        Schema::create('like_comments', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->cascadeOnDelete();
             $table->foreignIdFor(Comment::class)->cascadeOnDelete();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('like__comments');
+        Schema::dropIfExists('like_comments');
     }
 };

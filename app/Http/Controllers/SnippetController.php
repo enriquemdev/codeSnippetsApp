@@ -18,7 +18,7 @@ class SnippetController extends Controller
     {
         //
         return Inertia::render('Snippets/Index', [
-
+            'snippets' => Snippet::with('user:id,name,email')->latest()->get(),//Llama a los snippets con la relacion que tengan con usuario y los campos deseados
         ]);
     }
 
@@ -29,7 +29,9 @@ class SnippetController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Snippets/Create', [
+
+        ]);
     }
 
     /**
