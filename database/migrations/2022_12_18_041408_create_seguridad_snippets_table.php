@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\SeguridadSnippet;
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('snippets', function (Blueprint $table) {
+        Schema::create('seguridad_snippets', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->cascadeOnDelete();
-            $table->foreignIdFor(SeguridadSnippet::class)->cascadeOnDelete();
-            $table->string('name');
-            $table->string('description');
-            $table->text('text');
+            $table->string('tipo');//Publica, Quien tenga el link, Solo yo
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('snippets');
+        Schema::dropIfExists('seguridad_snippets');
     }
 };

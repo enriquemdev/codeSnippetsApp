@@ -36,4 +36,9 @@ class Snippet extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function seguridad()
+    {
+        return $this->belongsTo(SeguridadSnippet::class);
+    }
 }
