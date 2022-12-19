@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('not_languages', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Technologies::class)->cascadeOnDelete();
+            $table->foreignIdFor(Technologies::class)->name('language_id')->cascadeOnDelete();
             $table->timestamps();
         });
     }

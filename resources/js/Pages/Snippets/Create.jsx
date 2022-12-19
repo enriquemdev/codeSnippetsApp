@@ -4,8 +4,10 @@ import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { useForm, Head } from '@inertiajs/inertia-react';
 
+import CheckboxesTags from '@/Components/MultiAutocomplete';
 
-export default function Index({ auth }) {
+
+export default function Index({ auth, technologies}) {
     const { data, setData, post, processing, reset, errors } = useForm({ 
         name: '',
         description: '',
@@ -28,7 +30,7 @@ export default function Index({ auth }) {
                         type="text"
                         value={data.name}
                         placeholder="Nombre del snippet de código"
-                        className="mb-3 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                         onChange={e => setData('name', e.target.value)}
                     ></input>
                     <InputError message={errors.name} className="mt-2" />
@@ -37,7 +39,7 @@ export default function Index({ auth }) {
                     <textarea
                         value={data.description}
                         placeholder="Descripcion del snippet"
-                        className="mb-3 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        className="mt-3 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                         onChange={e => setData('description', e.target.value)}
                     ></textarea>
 
@@ -46,11 +48,16 @@ export default function Index({ auth }) {
                     <textarea
                         value={data.text}
                         placeholder="Escribe tu snippet!"
-                        className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        className="mt-3 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                         onChange={e => setData('text', e.target.value)}
                     ></textarea>
 
                     <InputError message={errors.text} className="mt-2" />
+
+                    <CheckboxesTags 
+                        className='bg-white mt-3 focus:border-indigo-300'
+                        technologies={ technologies }
+                    ></CheckboxesTags>
 
                     <PrimaryButton className="mt-4" processing={processing}>Añadir Snippet</PrimaryButton>
                 </form>

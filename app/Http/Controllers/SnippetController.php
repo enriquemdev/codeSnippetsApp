@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SnippetRequest;
 use App\Models\Snippet;
+use App\Models\Technologies;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -30,7 +31,11 @@ class SnippetController extends Controller
     public function create()
     {
         return Inertia::render('Snippets/Create', [
-
+            'technologies' => Technologies::all()->sortBy('name'),
+            
+            // //ESTO ES PARA PODER PASAR EN EL FORMATO CORRECTO LOS DATOS AL MULTIAUTOCOMPLETE DE MaterialUI
+            // //Uso el toArray para convertir de coleccion de Laravel a un arreglo normal y el array_values para dejar un arreglo con solo los valores del array asociativo
+            // 'technologies' => array_values(Technologies::all()->sortBy('name')->toArray()),
         ]);
     }
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            // $table->boolean('is_language');
+            $table->boolean('is_language');
             $table->timestamps();
         });
     }
