@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SnippetRequest;
+use App\Models\SeguridadSnippet;
 use App\Models\Snippet;
 use App\Models\Technologies;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class SnippetController extends Controller
     {
         return Inertia::render('Snippets/Create', [
             'technologies' => Technologies::all()->sortBy('name'),
+            'seguridad_snippets' => SeguridadSnippet::all(),
             
             // //ESTO ES PARA PODER PASAR EN EL FORMATO CORRECTO LOS DATOS AL MULTIAUTOCOMPLETE DE MaterialUI
             // //Uso el toArray para convertir de coleccion de Laravel a un arreglo normal y el array_values para dejar un arreglo con solo los valores del array asociativo
